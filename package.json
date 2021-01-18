@@ -1,0 +1,19 @@
+{
+  "name": "readme-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vincent-nguyen8931/README-generator.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vincent-nguyen8931/README-generator/issues"
+  },
+  "homepage": "https://github.com/vincent-nguyen8931/README-generator#readme"
+}
