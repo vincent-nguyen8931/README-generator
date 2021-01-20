@@ -4,77 +4,63 @@ const util = require('util');
 
 const writeFileAsync = util.promisify(fs.writeFile);
 
-/*
-a high-quality, professional README.md is generated with the 
-title of my project - make appear as title
-sections entitled: 
-Description, 
-Table of Contents, 
-Installation, 
-Usage, 
-License, - choose list of license, add badge to top of readme, add content to license section
-Contributing, 
-Tests, 
-Questions - github link and email
-*/
 // ask user questions to fill out readme template
 const promptUser = () =>
-inquirer.prompt([
-  {
-    type: 'input',
-    message: 'What is the title of the project?',
-    name: 'title',
-  },
-  {
-    type: 'input',
-    message: 'Description: ',
-    name: 'description',
-  },
-  {
-    type: 'input',
-    message: 'Installation instructions: ',
-    name: 'installation',
-  },
-  {
-    type: 'input',
-    message: 'Usage information: ',
-    name: 'usage',
-  },
-   {
-    type: 'list',
-    message: 'Which license do you want to apply?',
-    choices: ["MIT", "ISC", "Unlicense"],
-    name: 'license',
-  },
-  {
-    type: 'input',
-    message: 'Contribution guidelines: ',
-    name: 'contribution',
-  },
-  {
-    type: 'input',
-    message: 'Test instructions: ',
-    name: 'testing',
-  },
-  {
-    type: 'input',
-    message: 'GitHub username?',
-    name: 'github',
-  },
-  {
-    type: 'input',
-    message: 'E-mail address?',
-    name: 'email',
-  },
-])
+  inquirer.prompt([
+    {
+      type: 'input',
+      message: 'What is the title of the project?',
+      name: 'title',
+    },
+    {
+      type: 'input',
+      message: 'Description: ',
+      name: 'description',
+    },
+    {
+      type: 'input',
+      message: 'Installation instructions: ',
+      name: 'installation',
+    },
+    {
+      type: 'input',
+      message: 'Usage information: ',
+      name: 'usage',
+    },
+    {
+      type: 'list',
+      message: 'Which license do you want to apply?',
+      choices: ["MIT", "ISC", "Unlicense"],
+      name: 'license',
+    },
+    {
+      type: 'input',
+      message: 'Contribution guidelines: ',
+      name: 'contribution',
+    },
+    {
+      type: 'input',
+      message: 'Test instructions: ',
+      name: 'testing',
+    },
+    {
+      type: 'input',
+      message: 'GitHub username?',
+      name: 'github',
+    },
+    {
+      type: 'input',
+      message: 'E-mail address?',
+      name: 'email',
+    },
+  ])
 
 
 // Literal template for generating readme
-const generateREADME = (data) => 
-// console.log(typeof data.license)
-`# ${data.title}
+const generateREADME = (data) =>
+  `# ${data.title}
 
-[![License: ${data.license}](https://img.shields.io/badge/License-${data.license}-brightgreen.svg)](https://opensource.org/licenses/${data.license})
+[![License: ${data.license}](https://img.shields.io/badge/License-${data.license}-blue.svg)](https://opensource.org/licenses/${data.license})
 
 Description
 ------------
@@ -101,23 +87,23 @@ License
 ------------------
 
   ${(data.license === "MIT") ?
-  `Copyright 2021,  ${data.github}
+    `Copyright 2021,  ${data.github}
 
   Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
   
   The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
   
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`
-  : ""}
+    : ""}
   ${(data.license === "ISC") ?
-  `Copyright 2021,  ${data.github}
+    `Copyright 2021,  ${data.github}
 
   Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
   
   THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.`
-  : ""}
+    : ""}
   ${(data.license === "Unlicense") ?
-  `This is free and unencumbered software released into the public domain.
+    `This is free and unencumbered software released into the public domain.
 
   Anyone is free to copy, modify, publish, use, compile, sell, or
   distribute this software, either in source code form or as a compiled
@@ -141,7 +127,7 @@ License
   OTHER DEALINGS IN THE SOFTWARE.
   
   For more information, please refer to <http://unlicense.org/>`
-  : ""}
+    : ""}
 
 Contributing
 -----------------------
@@ -158,4 +144,4 @@ E-mail: <a href="mailto: ${data.email}">${data.email}</a>
 `;
 
 promptUser()
-.then((response) => writeFileAsync("./Generated-readme/README-Template.md", generateREADME(response))).then(() => console.log("Successfully created readme template in Generated-readme folder.")).catch((err) => console.error(err));
+  .then((response) => writeFileAsync("./Generated-readme/README-Template.md", generateREADME(response))).then(() => console.log("Successfully created readme template in Generated-readme folder.")).catch((err) => console.error(err));
