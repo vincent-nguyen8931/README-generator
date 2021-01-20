@@ -43,8 +43,8 @@ inquirer.prompt([
    {
     type: 'list',
     message: 'Which license do you want to apply?',
-    choices: ["E-mail", "Phone", "Mailing", "postcard", "carrier pigeon"],
-    name: 'communication',
+    choices: ["MIT", "ISC", "Unlicense"],
+    name: 'license',
   },
   {
     type: 'input',
@@ -68,9 +68,15 @@ inquirer.prompt([
   },
 ])
 
+
+
+
+
 // Literal template for generating readme
 const generateREADME = (data) =>
 `# ${data.title}
+
+[![License: ${data.license}](https://img.shields.io/badge/License-${data.license}-brightgreen.svg)](https://opensource.org/licenses/${data.license})
 
 Description
 ------------
@@ -87,29 +93,30 @@ Table of contents
 
 Installation
 -------------------
-${data.description}
+${data.installation}
 
 Usage
 -------------
-${data.description}
+${data.usage}
 
 License
 ------------------
-${data.description}
+`, if (data.license === "MIT") {
+
+}`
 
 Contributing
 -----------------------
-${data.description}
+${data.contribution}
 
 Tests
 ---------------
-${data.description}
+${data.testing}
 
 Questions
 ----------
 Github: <a href="https://github.com/${data.github}">https://github.com/${data.github}</a>
-E-mail: <a ${data.description}
-
+E-mail: <a href="mailto: ${data.email}">${data.email}</a>
 `;
 
 promptUser()
