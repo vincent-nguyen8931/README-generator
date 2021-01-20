@@ -34,7 +34,7 @@ Below is the link to the video demonstration the working application. <br />
 Features
 ------------------
 
-The user has the capablity to input description, installation instructions, usage information, contribution guidelines, and test instructions into the various prompts. They will be able to choose a license from the list of licenses as well as input their github username and e-mail address. This is to allow for showcasing their repositories and provide a point of contact to the creator.
+The user has the capablity to input description, installation instructions, usage information, contribution guidelines, and test instructions into the various prompts. They will be able to choose a license from the list of licenses as well as input their github username and e-mail address. This is to allow for showcasing their repositories and provide a point of contact.
 
 Credits
 ---------------
